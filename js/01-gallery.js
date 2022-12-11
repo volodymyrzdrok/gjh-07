@@ -30,14 +30,14 @@ function getModalImage(e) {
        <img src=${e.target.dataset.source} alt="${e.target.alt}" >
     `);
   instance.show();
-  window.addEventListener("keydown", closeModal(instance));
-}
+  window.addEventListener("keydown", closeModal);
 
-function closeModal(instance) {
-  return function (e) {
+  function closeModal(e) {
     if (e.code === "Escape") {
       instance.close();
-      window.removeEventListener("keydown", closeModal(instance));
+      window.removeEventListener("keydown", closeModal);
     }
-  };
+
+    console.log(e.code);
+  }
 }
