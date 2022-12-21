@@ -25,3 +25,6 @@ const lightbox = new SimpleLightbox(".gallery a", {
   captionDelay: 250,
   captionPosition: "bottom",
 });
+lightbox = new SimpleLightbox(".gallery a", {
+  /* options */
+});

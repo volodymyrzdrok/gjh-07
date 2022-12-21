@@ -26,18 +26,26 @@ function getModalImage(e) {
   if (e.target.nodeName !== "IMG") {
     return;
   }
-  const instance = basicLightbox.create(`
+  const instance = basicLightbox.create(
+    `
        <img src=${e.target.dataset.source} alt="${e.target.alt}" >
-    `);
+    `,
+    {
+      onClose: () => {
+        window.removeEventListener("keydown", closeModal);
+      },
+    }
+  );
   instance.show();
+
   window.addEventListener("keydown", closeModal);
 
   function closeModal(e) {
     if (e.code === "Escape") {
       instance.close();
-      window.removeEventListener("keydown", closeModal);
+      // window.removeEventListener("keydown", closeModal);
     }
 
-    console.log(e.code);
+    console.log("слухач працює ! на клавіатурі! ", e.code);
   }
 }
